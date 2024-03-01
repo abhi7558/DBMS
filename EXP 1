@@ -171,8 +171,6 @@ mysql> desc EMPLOYEE;
 +----------+-------------+------+-----+---------+-------+
 6 rows in set (0.00 sec)
 
-               
-//VERIFIED
 
  2. Change the data type of the column ‘DOB’  in year the table EMPLOYEE    
  
