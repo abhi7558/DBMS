@@ -223,4 +223,4 @@ mysql> desc student1;
 ERROR 1146 (42S02): Table 'employee.student1' doesn't exist
 mysql> 
 
-
+//VERIFIED
