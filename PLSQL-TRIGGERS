@@ -1,0 +1,26 @@
+mysql> CREATE TRIGGER CUST_TRIG AFTER UPDATE ON customer FOR EACH ROW BEGIN INSERT INTO CUST SET id=NEW.id, name=NEW.name,adress=NEW.adress,city=NEW.city,ph_no=NEW.ph_no; END//
+Query OK, 0 rows affected (0.13 sec)
+
+mysql> UPDATE customer SET CITY="IDUKKI" WHERE id=10001;
+    -> //
+Query OK, 1 row affected (0.48 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE customer SET ph_no=98567347 WHERE id=10003;
+    -> //
+Query OK, 1 row affected (0.09 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT *FROM CUST;
+    -> //
++-------+------+--------+--------------------+----------+
+| id    | name | adress | city               | ph_no    |
++-------+------+--------+--------------------+----------+
+| 10001 | John | abcdef | IDUKKI             |     NULL |
+| 10003 | Adam | nhmhh  | thiruvananthapuram | 98567347 |
++-------+------+--------+--------------------+----------+
+2 rows in set (0.00 sec)
+
+mysql> 
+
+//VERIFIED

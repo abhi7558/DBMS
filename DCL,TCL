@@ -1,0 +1,144 @@
+use ksb
+
+mysql> set autocommit=off;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> insert into  book values(012,"agyaff");
+Query OK, 1 row affected (0.45 sec)
+
+mysql> commit;
+Query OK, 0 rows affected (0.60 sec)
+
+mysql> select * from book;
++---------+----------------+
+| book_id | book           |
++---------+----------------+
+|      12 | agyaff         |
+|   23001 | python         |
+|   45702 | data structure |
++---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> delete from book where book_id=12;
+Query OK, 1 row affected (0.51 sec)
+
+mysql> select * from book;
++---------+----------------+
+| book_id | book           |
++---------+----------------+
+|   23001 | python         |
+|   45702 | data structure |
++---------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.52 sec)
+
+mysql> select * from book;
++---------+----------------+
+| book_id | book           |
++---------+----------------+
+|      12 | agyaff         |
+|   23001 | python         |
+|   45702 | data structure |
++---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> insert into  book values(014,"aaaaa");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> savepoint s1;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> insert into  book values(015,"bbbbbb");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> savepoint s2;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> insert into  book values(016,"ccccc");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> savepoint s3;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from book;
++---------+----------------+
+| book_id | book           |
++---------+----------------+
+|      12 | agyaff         |
+|      14 | aaaaa          |
+|      15 | bbbbbb         |
+|      16 | ccccc          |
+|   23001 | python         |
+|   45702 | data structure |
++---------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> rollback to s2;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from book;
++---------+----------------+
+| book_id | book           |
++---------+----------------+
+|      12 | agyaff         |
+|      14 | aaaaa          |
+|      15 | bbbbbb         |
+|   23001 | python         |
+|   45702 | data structure |
++---------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> create user hadiya@'localhost' identified by 'mypass';
+Query OK, 0 rows affected (0.30 sec)
+
+mysql> create user anju@'localhost' identified by 'pass';
+Query OK, 0 rows affected (0.09 sec)
+
+mysql> create user anu@'localhost' identified by 'passswprd';
+Query OK, 0 rows affected (0.11 sec)
+
+mysql> grant select on INVOICE.customer to hadiya@'localhost';
+Query OK, 0 rows affected (0.11 sec)
+
+mysql> show grants for hadiya@'localhost';
++--------------------------------------------------------------+
+| Grants for hadiya@localhost                                  |
++--------------------------------------------------------------+
+| GRANT USAGE ON *.* TO `hadiya`@`localhost`                   |
+| GRANT SELECT ON `INVOICE`.`customer` TO `hadiya`@`localhost` |
++--------------------------------------------------------------+
+2 rows in set (0.00 sec)
+
+mysql> show grants for anu@'localhost';
++--------------------------------------------------------------+
+| Grants for hadiya@localhost                                  |
++--------------------------------------------------------------+
+| GRANT USAGE ON *.* TO `anu`@`localhost`                      |
+| GRANT SELECT ON `INVOICE`.`customer` TO `anu`@`localhost`    |
++--------------------------------------------------------------+
+2 rows in set (0.00 sec)
+
+mysql> REVOKE DELETE ON INVOICE.customer from hadiya@'localhost';
+Query OK, 0 rows affected (0.09 sec)
+
+mysql> show grants for hadiya@'localhost';
++--------------------------------------------------------------+
+| Grants for hadiya@localhost                                  |
++--------------------------------------------------------------+
+| GRANT USAGE ON *.* TO `hadiya`@`localhost`                   |
+| GRANT SELECT ON `INVOICE`.`customer` TO `hadiya`@`localhost` |
++--------------------------------------------------------------+
+2 rows in set (0.00 sec)
+
+mysql> show grants for anu@'localhost';
++--------------------------------------------------------------+
+| Grants for hadiya@localhost                                  |
++--------------------------------------------------------------+
+| GRANT USAGE ON *.* TO `anu`@`localhost`                      |
+| GRANT SELECT ON `INVOICE`.`customer` TO `anu`@`localhost`    |
++--------------------------------------------------------------+
+2 rows in set (0.00 sec)
+
+//VERIFIED

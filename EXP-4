@@ -1,0 +1,71 @@
+1)List all the customer details
+
+mysql> select * from customer;
++-------+-------+---------+--------------------+--------+
+| id    | name  | adress  | city               | ph_no  |
++-------+-------+---------+--------------------+--------+
+| 10001 | John  | abcdef  | calicut            |   NULL |
+| 10002 | Adam  | aaaaaaa | idukki             | 563647 |
+| 10003 | Adam  | nhmhh   | thiruvananthapuram | 232335 |
+| 10004 | James | dfgret  | Malapuram          |  98754 |
+| 10005 | angel | mnbvc   | kottayam           |  78965 |
++-------+-------+---------+--------------------+--------+
+5 rows in set (0.01 sec)
+
+
+2)List pname,price of all products.
+
+mysql> select p_name,price from product;
++-----------+-------+
+| p_name    | price |
++-----------+-------+
+| pen       |    82 |
+| soap      |   102 |
+| pencil    |    92 |
+| book      |   122 |
+| color box |   143 |
++-----------+-------+
+5 rows in set (0.00 sec)
+
+
+3)List all invoice item, avoid duplicates.
+
+mysql> select distinct  p_id from invoice_item;
++------+
+| p_id |
++------+
+|  432 |
+|  433 |
+|  435 |
+|  436 |
++------+
+4 rows in set (0.01 sec)
+
+
+4)List product price between 50rs and 150rs.
+
+mysql> select * from product where price between 50 and 150;
++------+-----------+-------+
+| p_id | p_name    | price |
++------+-----------+-------+
+|  432 | pen       |    82 |
+|  433 | soap      |   102 |
+|  434 | pencil    |    92 |
+|  435 | book      |   122 |
+|  436 | color box |   143 |
++------+-----------+-------+
+5 rows in set (0.00 sec)
+ 
+ 
+ 5)List the customer details who lives in 'clt','tvm'.
+ 
+ mysql> select * from customer where city in('thiruvananthapuram','calicut');
++-------+------+--------+--------------------+--------+
+| id    | name | adress | city               | ph_no  |
++-------+------+--------+--------------------+--------+
+| 10001 | John | abcdef | calicut            |   NULL |
+| 10003 | Adam | nhmhh  | thiruvananthapuram | 232335 |
++-------+------+--------+--------------------+--------+
+2 rows in set (0.00 sec)
+
+//VERIFIED

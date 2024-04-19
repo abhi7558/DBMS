@@ -1,0 +1,25 @@
+1)List the customer names of invoice date 2nd november 2023.
+
+mysql> select name from customer  where id in(select cust_id from invoice_master where inv_date='2023-11-02');
++------+
+| name |
++------+
+| John |
++------+
+1 row in set (0.00 sec)
+
+2)List the name and price of each invoice item.
+
+mysql> select p_name,price from product where p_id in(select p_id from invoice_master);
++-----------+-------+
+| p_name    | price |
++-----------+-------+
+| pen       |    82 |
+| soap      |   102 |
+| pencil    |    92 |
+| book      |   122 |
+| color box |   143 |
++-----------+-------+
+5 rows in set (0.00 sec)
+
+//VERIFIED

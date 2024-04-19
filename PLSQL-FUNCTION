@@ -1,0 +1,30 @@
+mysql> DELIMITER //
+mysql> CREATE FUNCTION PRICEIND(PRICE INT) RETURNS VARCHAR(20)
+    -> DETERMINISTIC
+    -> BEGIN
+    -> DECLARE PRICE_IND VARCHAR(20);
+    -> IF PRICE<=35 THEN SET PRICE_IND='LOW';
+    -> ELSEIF(PRICE>35 AND PRICE<=200) THEN SET PRICE_IND='MEDIUM';
+    -> ELSEIF PRICE>200 THEN SET PRICE_IND='HIGH';
+    -> END IF;
+    -> RETURN(PRICE_IND);
+    -> END
+    -> //
+Query OK, 0 rows affected (0.20 sec)
+
+mysql> select p_id,p_name,priceind(price) from product;
+    -> //
++------+-----------+-----------------+
+| p_id | p_name    | priceind(price) |
++------+-----------+-----------------+
+|  432 | pen       | MEDIUM          |
+|  433 | soap      | MEDIUM          |
+|  434 | pencil    | MEDIUM          |
+|  435 | book      | MEDIUM          |
+|  436 | color box | MEDIUM          |
++------+-----------+-----------------+
+5 rows in set (0.03 sec)
+
+mysql> 
+
+//VERIFIED

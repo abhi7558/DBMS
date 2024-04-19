@@ -1,0 +1,51 @@
+1) List the product name,price except soap on price order.
+
+mysql> select p_name,price from product where p_name !="soap" order by price;
++-----------+-------+
+| p_name    | price |
++-----------+-------+
+| pen       |    82 |
+| pencil    |    92 |
+| book      |   122 |
+| color box |   143 |
++-----------+-------+
+4 rows in set (0.00 sec)
+
+
+2)Find minimum,maximum and average price of a product.
+
+mysql> select min(price) as Minimum_price,max(price) as Maximum_price,avg(price) as Average_price from product;
++---------------+---------------+---------------+
+| Minimum_price | Maximum_price | Average_price |
++---------------+---------------+---------------+
+|            82 |           143 |      108.2000 |
++---------------+---------------+---------------+
+1 row in set (0.41 sec)
+
+
+3)Find the number of customers in each city.
+
+mysql> select city,count(name) from customer group by city;
++--------------------+-------------+
+| city               | count(name) |
++--------------------+-------------+
+| idukki             |           2 |
+| calicut            |           3 |
+| thiruvananthapuram |           1 |
+| Malapuram          |           2 |
+| kottayam           |           1 |
++--------------------+-------------+
+5 rows in set (0.00 sec)
+
+
+4)Find the number of customers in each city only include city with more than 3 customers.
+
+mysql> select city,count(*)as Number_of_customers from customer group by city  having count(city)>2;
++---------+---------------------+
+| city    | Number_of_customers |
++---------+---------------------+
+| calicut |                   3 |
++---------+---------------------+
+1 row in set (0.00 sec)
+
+//VERIFIED

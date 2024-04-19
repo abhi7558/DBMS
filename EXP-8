@@ -1,0 +1,22 @@
+ACCESSING DATA BASE
+
+1)create a view for customers who have purchased products.
+
+mysql> create view purchase as select name from customer where id in(select cust_id from invoice_master);
+Query OK, 0 rows affected (0.17 sec)
+
+mysql> select * from purchase;
++-------+
+| name  |
++-------+
+| silu  |
+| John  |
+| Adam  |
+| Adam  |
+| James |
+| angel |
++-------+
+6 rows in set (0.00 sec)
+ 
+//VERIFIED
+
