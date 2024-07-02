@@ -87,7 +87,7 @@ INVOICE> db.CUSTOMER.find()
     id: 1001,
     name: 'hadiya',
     address: 'aaaa',
-    city: 'malapuram'
+    city: 'Pattambi'
   },
   {
     _id: ObjectId('661389c7e5ebc09e5aef634c'),
